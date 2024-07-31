@@ -37,7 +37,7 @@
   -->
   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%d{ISO8601} [myid:%X{myid}] - %-5p [%t:%C{1}@%L] - %m%n</pattern>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | [%thread] | %-5level | %logger{36}:%line | %msg%n</pattern>
     </encoder>
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>${zookeeper.console.threshold}</level>
@@ -47,10 +47,10 @@
   <!--
     Add ROLLINGFILE to root logger to get log file output
   -->
-  <!--appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <File>${zookeeper.log.dir}/${zookeeper.log.file}</File>
     <encoder>
-      <pattern>%d{ISO8601} [myid:%X{myid}] - %-5p [%t:%C{1}@%L] - %m%n</pattern>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | [%thread] | %-5level | %logger{36}:%line | %msg%n</pattern>
     </encoder>
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>${zookeeper.log.threshold}</level>
@@ -62,23 +62,23 @@
     <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
       <MaxFileSize>${zookeeper.log.maxfilesize}</MaxFileSize>
     </triggeringPolicy>
-  </appender-->
+  </appender>
 
   <!--
     Add TRACEFILE to root logger to get log file output
     Log TRACE level and above messages to a log file
   -->
-  <!--property name="zookeeper.tracelog.dir" value="${zookeeper.log.dir}" />
+  <property name="zookeeper.tracelog.dir" value="${zookeeper.log.dir}" />
   <property name="zookeeper.tracelog.file" value="zookeeper_trace.log" />
   <appender name="TRACEFILE" class="ch.qos.logback.core.FileAppender">
     <File>${zookeeper.tracelog.dir}/${zookeeper.tracelog.file}</File>
     <encoder>
-      <pattern>%d{ISO8601} [myid:%X{myid}] - %-5p [%t:%C{1}@%L] - %m%n</pattern>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | [%thread] | %-5level | %logger{36}:%line | %msg%n</pattern>
     </encoder>
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
       <level>TRACE</level>
     </filter>
-  </appender-->
+  </appender>
 
   <!--
     zk audit logging
